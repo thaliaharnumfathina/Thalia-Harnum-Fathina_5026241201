@@ -8,6 +8,7 @@ use App\Http\Controllers\PegawaiDBController ;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\NilaiKuliahController;
 use App\Http\Controllers\KeranjangBelanjaController;
+use App\Http\Controllers\SepedaMotorController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -81,3 +82,11 @@ Route::get('/keranjang/create',[KeranjangBelanjaController::class, 'create']);
 Route::post('/keranjang/store',[KeranjangBelanjaController::class, 'store']);
 Route::delete('/keranjang/delete/{id}',[KeranjangBelanjaController::class, 'destroy']);
 Route::post('/keranjang/beli/{id}',[KeranjangBelanjaController::class, 'beli']);
+
+//sepeda motor
+Route::get('/sepedamotor', [SepedaMotorController::class, 'index'])->name('sepedamotor.index');
+Route::get('/sepedamotor/create', [SepedaMotorController::class, 'create'])->name('sepedamotor.create');
+Route::post('/sepedamotor', [SepedaMotorController::class, 'store'])->name('sepedamotor.store');
+Route::get('/sepedamotor/{id}/edit', [SepedaMotorController::class, 'edit'])->name('sepedamotor.edit');
+Route::put('/sepedamotor/{id}', [SepedaMotorController::class, 'update'])->name('sepedamotor.update');
+Route::delete('/sepedamotor/{id}', [SepedaMotorController::class, 'destroy'])->name('sepedamotor.destroy');
