@@ -29,14 +29,14 @@ class KeranjangBelanjaController extends Controller
 
         return redirect('/keranjang');
     }
-    public function beli($id)
+    public function beli($ID)
 {
     $item = DB::table('keranjangbelanja')
-        ->where('id', $id)
+        ->where('ID', $ID)
         ->first();
 
     DB::table('keranjangbelanja')
-        ->where('id', $id)
+        ->where('ID', $ID)
         ->update([
             'Jumlah' => $item->Jumlah + 1
         ]);
@@ -44,10 +44,10 @@ class KeranjangBelanjaController extends Controller
     return redirect('/keranjang');
 }
 
-    public function destroy($id)
+    public function destroy($ID)
     {
         DB::table('keranjangbelanja')
-            ->where('id', $id)
+            ->where('ID', $ID)
             ->delete();
 
         return redirect('/keranjang');

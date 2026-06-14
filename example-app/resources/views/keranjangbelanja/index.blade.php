@@ -31,18 +31,18 @@
                     <tbody>
                         @forelse($data as $item)
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->ID }}</td>
                                 <td>{{ $item->KodeBarang }}</td>
                                 <td>{{ $item->Jumlah }}</td>
                                 <td>Rp {{ number_format($item->Harga, 0, ',', '.') }}</td>
                                 <td>Rp {{ number_format($item->Jumlah * $item->Harga, 0, ',', '.') }}</td>
                                 <td class="text-center">
-                                    <form action="/keranjang/beli/{{ $item->id }}" method="POST" class="d-inline">
+                                    <form action="/keranjang/beli/{{ $item->ID }}" method="POST" class="d-inline">
                                         @csrf
                                         <button type="submit" class="btn btn-success btn-sm">Beli</button>
                                     </form>
 
-                                    <form action="/keranjang/delete/{{ $item->id }}" method="POST" class="d-inline">
+                                    <form action="/keranjang/delete/{{ $item->ID }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm">Batal</button>

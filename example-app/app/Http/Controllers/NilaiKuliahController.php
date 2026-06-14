@@ -7,21 +7,14 @@ use Illuminate\Support\Facades\DB;
 
 class NilaiKuliahController extends Controller
 {
-    // Fungsi konversi nilai angka ke huruf
-    private function nilaiHuruf($na)
+    public function indexnilaikuliah()
     {
-        if ($na <= 40)           return 'D';
-        elseif ($na <= 60)       return 'C';
-        elseif ($na <= 80)       return 'B';
-        else                     return 'A';
+        // Mengirim data nilaikuliah ke view index
+        $nilaikuliah = DB::table('nilaikuliah')->get();
+        return view('nilaikuliah.index', ['nilaikuliah' => $nilaikuliah]);
     }
 
-    public function index()
-    {
-        $data = DB::table('nilaikuliah')->get();
-        return view('nilaikuliah.index', compact('data'));
-    }
-
+    // Fungsi untuk menampilkan form tambah data
     public function tambah()
     {
         return view('nilaikuliah.tambah');
@@ -29,10 +22,28 @@ class NilaiKuliahController extends Controller
 
     public function store(Request $request)
     {
+        $nilaiAngka = $request->NilaiAngka;
+        $sks = $request->SKS;
+
+        // Hitung Nilai Huruf otomatis
+        if ($nilaiAngka <= 40) {
+            $nilaiHuruf = 'D';
+        } elseif ($nilaiAngka >= 41 && $nilaiAngka <= 60) {
+            $nilaiHuruf = 'C';
+        } elseif ($nilaiAngka >= 61 && $nilaiAngka <= 80) {
+            $nilaiHuruf = 'B';
+        } else {
+            $nilaiHuruf = 'A';
+        }
+
+        // Hitung Bobot otomatis
+        $bobot = $nilaiAngka * $sks;
+
+        // Simpan ke database
         DB::table('nilaikuliah')->insert([
-            'NRP'        => $request->NRP,
-            'NilaiAngka' => $request->NilaiAngka,
-            'SKS'        => $request->SKS,
+            'NRP' => $request->NRP,
+            'NilaiAngka' => $nilaiAngka,
+            'SKS' => $sks,
         ]);
 
         return redirect('/nilaikuliah');
