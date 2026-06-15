@@ -94,4 +94,4 @@ Route::delete('/sepedamotor/{id}', [SepedaMotorController::class, 'destroy'])->n
 
 //Mykaryawan
 Route::get('/mykaryawan', [MykaryawanController::class, 'index'])->name('mykaryawan.index');
-Route::get('/mykaryawan/kodepegawai', [MykaryawanController::class, 'show'])->name('mykaryawan.show');
+Route::get('/mykaryawan/{kodepegawai}', [MykaryawanController::class, 'show'])->name('mykaryawan.show');
