@@ -9,6 +9,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\NilaiKuliahController;
 use App\Http\Controllers\KeranjangBelanjaController;
 use App\Http\Controllers\SepedaMotorController;
+use App\Http\Controllers\MykaryawanController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -90,3 +91,7 @@ Route::post('/sepedamotor', [SepedaMotorController::class, 'store'])->name('sepe
 Route::get('/sepedamotor/{id}/edit', [SepedaMotorController::class, 'edit'])->name('sepedamotor.edit');
 Route::put('/sepedamotor/{id}', [SepedaMotorController::class, 'update'])->name('sepedamotor.update');
 Route::delete('/sepedamotor/{id}', [SepedaMotorController::class, 'destroy'])->name('sepedamotor.destroy');
+
+//Mykaryawan
+Route::get('/mykaryawan', [MykaryawanController::class, 'index'])->name('mykaryawan.index');
+Route::get('/mykaryawan/kodepegawai', [MykaryawanController::class, 'show'])->name('mykaryawan.show');

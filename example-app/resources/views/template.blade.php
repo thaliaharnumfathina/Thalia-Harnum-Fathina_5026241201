@@ -36,7 +36,7 @@
                         <a class="nav-link" href="/sepedamotor">Pra EAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">EAS</a>
+                        <a class="nav-link" href="/mykaryawan">EAS</a>
                     </li>
                 </ul>
             </div>
