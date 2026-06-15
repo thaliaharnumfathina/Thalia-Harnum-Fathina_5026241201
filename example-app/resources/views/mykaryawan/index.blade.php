@@ -21,7 +21,6 @@
         <tbody>
             @foreach($mykaryawan as $karyawan)
             <tr>
-                <td>{{ $loop->iteration }}</td>
                 <td>{{ $karyawan->kodepegawai }}</td>
                 <td>{{ ucwords(strtolower($karyawan->namalengkap)) }}</td>
                 <td>{{ $karyawan->divisi }}</td>
